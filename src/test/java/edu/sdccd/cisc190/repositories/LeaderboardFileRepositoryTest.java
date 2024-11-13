@@ -9,8 +9,6 @@ import java.util.Properties;
 
 import static org.junit.jupiter.api.Assertions.*;
 class LeaderboardFileRepositoryTest {
-    public static final String FILE_NAME = "testPlayerScores.dat";
-
     @Test
     void loadLeaderboard() throws Exception {
         Properties config = Main.loadConfigFile();
@@ -32,7 +30,8 @@ class LeaderboardFileRepositoryTest {
         assertEquals(15, leaderboardRepository.getLeaderboard().getPlayerScores()[3].getScore());
         assertEquals("Denise", leaderboardRepository.getLeaderboard().getPlayerScores()[3].getPlayerName());
 
-        File file = new File(FILE_NAME);
-        if(file.delete()) System.out.printf("%s deleted successfully.", FILE_NAME);
+        File file = new File(config.getOrDefault("leaderboard.repository.path", "testLeaderboard.dat").toString());
+        System.out.println(file.getAbsolutePath());
+        // if(file.delete()) System.out.printf("%s deleted successfully.", FILE_NAME);
     }
 }
