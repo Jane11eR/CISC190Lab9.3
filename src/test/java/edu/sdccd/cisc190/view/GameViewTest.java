@@ -1,6 +1,8 @@
 package edu.sdccd.cisc190.view;
 
 import edu.sdccd.cisc190.PositiveFloatMatcher;
+import edu.sdccd.cisc190.views.BaseScene;
+import edu.sdccd.cisc190.views.GameView;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
