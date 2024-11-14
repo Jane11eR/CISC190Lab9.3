@@ -4,14 +4,14 @@ import java.io.Serializable;
 
 public class PlayerScore implements Serializable, Comparable<PlayerScore> {
     private final String playerName;
-    private final int score;
+    private final float score;
 
-    public PlayerScore(String playerName, int score) {
+    public PlayerScore(String playerName, float score) {
         this.playerName = playerName;
         this.score = score;
     }
     public String getPlayerName() {return playerName;}
-    public int getScore() {return score;}
+    public float getScore() {return score;}
 
     /**
      * sort ascending by score, then ascending playerName

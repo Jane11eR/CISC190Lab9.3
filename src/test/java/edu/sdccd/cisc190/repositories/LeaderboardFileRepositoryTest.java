@@ -30,8 +30,9 @@ class LeaderboardFileRepositoryTest {
         assertEquals(15, leaderboardRepository.getLeaderboard().getPlayerScores()[3].getScore());
         assertEquals("Denise", leaderboardRepository.getLeaderboard().getPlayerScores()[3].getPlayerName());
 
-        File file = new File(config.getOrDefault("leaderboard.repository.path", "testLeaderboard.dat").toString());
+        String fileName = config.getOrDefault("leaderboard.repository.path", "testLeaderboard.dat").toString();
+        File file = new File(fileName);
         System.out.println(file.getAbsolutePath());
-        // if(file.delete()) System.out.printf("%s deleted successfully.", FILE_NAME);
+        if(file.delete()) System.out.printf("%s deleted successfully.", fileName);
     }
 }
