@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,6 +51,17 @@ public class LeaderboardView extends BaseScene {
             LOGGER.error(e.getMessage());
         }
 
-        return null;
+        int row = 1;
+        for(PlayerScore score: leaderboardRepository.getLeaderboard().getPlayerScores()) {
+            if(score != null) {
+                grid.add(new Label(score.getPlayerName()), 0, row);
+                grid.add(new Label(String.format("%.1f", score.getScore())), 1, row);
+                row++;
+            }
+        }
+
+        grid.add(quitButton, 1, row);
+
+        return new VBox(grid);
     }
 }

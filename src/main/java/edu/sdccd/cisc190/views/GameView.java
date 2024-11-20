@@ -42,6 +42,8 @@ public class GameView extends BaseScene {
         Button submitButton = new Button();
 
         TimerService timer = new TimerService(submitButton);
+        timer.start();
+
         submitButton.setOnAction(event -> {
             playerName = playerNameTextField.getText();
             playerScore = Float.parseFloat(submitButton.getText());

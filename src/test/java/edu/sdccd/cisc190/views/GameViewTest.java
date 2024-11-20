@@ -1,8 +1,6 @@
-package edu.sdccd.cisc190.view;
+package edu.sdccd.cisc190.views;
 
 import edu.sdccd.cisc190.PositiveFloatMatcher;
-import edu.sdccd.cisc190.views.BaseScene;
-import edu.sdccd.cisc190.views.GameView;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -11,8 +9,6 @@ import org.testfx.api.FxRobot;
 import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
 import org.testfx.matcher.control.LabeledMatchers;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(ApplicationExtension.class)
 class GameViewTest {

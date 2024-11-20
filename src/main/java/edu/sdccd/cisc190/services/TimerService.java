@@ -12,7 +12,7 @@ public class TimerService extends Service<Void> {
 
     public TimerService(Labeled node) {
         this.node = node;
-        node.setText("0.0");
+        this.node.setText("0.0");
         isRunning = true;
     }
 
@@ -20,23 +20,22 @@ public class TimerService extends Service<Void> {
         isRunning = false;
     }
 
+
     @Override
     protected Task<Void> createTask() {
-        startTime = System.currentTimeMillis();
-        float elapsedTime = 0;
-        while (isRunning) {
-            elapsedTime = (System.currentTimeMillis() - startTime) / 1000f;
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
+        return new Task<>() {
+            @Override
+            protected Void call() throws Exception {
+                startTime = System.currentTimeMillis();
+                float elapsedTime = 0;
+                while (isRunning) {
+                    elapsedTime = (System.currentTimeMillis() - startTime) / 1000f;
+                    Thread.sleep(100);
+                    float finalElapsedTime = elapsedTime;
+                    Platform.runLater(() -> node.setText(String.format("%.1f", finalElapsedTime)));
+                }
                 return null;
             }
-            float finalElapsedTime = elapsedTime;
-            Platform.runLater(() -> {
-                node.setText(String.format("%.1f", finalElapsedTime));
-            });
-        }
-        return null;
+        };
     }
-
 }
